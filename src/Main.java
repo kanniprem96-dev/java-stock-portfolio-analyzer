@@ -24,8 +24,32 @@ public class Main {
         // Test getTotalProfitLoss
         double totalProfitLoss = myPortfolio.getTotalProfitLoss();
         System.out.printf("Total Profit/Loss: $%.2f%n", totalProfitLoss);
+
+        // Test Alphabetical Sort
+        System.out.println("\n--- Alphabetical Order ---");
+        myPortfolio.sortByTicker();
+        myPortfolio.printPortfolio();
+
+        // Test Profit Sort
+        System.out.println("\n--- Sorted by Highest Profit ---");
+        myPortfolio.sortByProfit();
+        myPortfolio.printPortfolio();
+
+        //Test Percentage Return Sort
+        System.out.println("\n--- Sorted by Highest Percentage Return ---");
+        myPortfolio.sortByPercentageReturn();
+        myPortfolio.printPortfolio();
+
+        // 3. Find and Highlight Best/Worst
+        Stock best = myPortfolio.getBestPerformingStock();
+        Stock worst = myPortfolio.getWorstPerformingStock();
+
+        if (best != null && worst != null) {
+            System.out.println("===============================");
+            System.out.println("BEST PERFORMER: " + best.getTicker() + " (" + String.format("%.2f", best.getPercentageReturn()) + "%)");
+            System.out.println("WORST PERFORMER: " + worst.getTicker() + " (" + String.format("%.2f", worst.getPercentageReturn()) + "%)");
+            System.out.println("===============================");
+        }
     }
 }
 
-//javac src/*.java
-// >> java -cp src Main

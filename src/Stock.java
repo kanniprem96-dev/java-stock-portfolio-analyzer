@@ -31,8 +31,13 @@ public class Stock{
     }
 
     //Method to print the basic stock info
-    public void printInfo(){
-        System.out.println(ticker + " | Shares: " + shares + " | Buy Price: $" + buyPrice + " | Current Price: $" + currentPrice);
+    public void printInfo() {
+        double profit = getProfitLoss();
+        double percent = getPercentageReturn();
+
+        // %-6s means "String, left-aligned, 6 spaces wide" to keep columns straight
+        System.out.printf("%-6s | Shares: %-4d | Value: $%-8.2f | Profit: $%-8.2f (%-6.2f%%)%n", 
+                        ticker, shares, getCurrentValue(), profit, percent);
     }
 
     public double getCurrentValue(){
